@@ -4,10 +4,8 @@ import HeroSection from '@/components/sections/HeroSection';
 import AboutSection from '@/components/sections/AboutSection';
 import PortfolioSection from '@/components/sections/PortfolioSection';
 import ContactSection from '@/components/sections/ContactSection';
-
 const Index = () => {
-  return (
-    <div className="min-h-screen relative">
+  return <div className="min-h-screen relative">
       <ParticleBackground />
       <Navigation />
       
@@ -21,11 +19,9 @@ const Index = () => {
       {/* Footer */}
       <footer className="py-8 text-center text-muted-foreground border-t border-primary/20">
         <div className="container mx-auto px-6">
-          <p>&copy; 2024 Mopuri Saikumar Reddy. Crafted with passion and code.</p>
+          <p>© 2025 Mopuri Saikumar Reddy. Crafted with passion and code.</p>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
