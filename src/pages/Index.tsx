@@ -1,12 +1,29 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navigation from '@/components/Navigation';
+import ParticleBackground from '@/components/ParticleBackground';
+import HeroSection from '@/components/sections/HeroSection';
+import AboutSection from '@/components/sections/AboutSection';
+import PortfolioSection from '@/components/sections/PortfolioSection';
+import ContactSection from '@/components/sections/ContactSection';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen relative">
+      <ParticleBackground />
+      <Navigation />
+      
+      <main className="relative z-10">
+        <HeroSection />
+        <AboutSection />
+        <PortfolioSection />
+        <ContactSection />
+      </main>
+      
+      {/* Footer */}
+      <footer className="py-8 text-center text-muted-foreground border-t border-primary/20">
+        <div className="container mx-auto px-6">
+          <p>&copy; 2024 Mopuri Saikumar Reddy. Crafted with passion and code.</p>
+        </div>
+      </footer>
     </div>
   );
 };

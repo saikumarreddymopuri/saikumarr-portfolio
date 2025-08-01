@@ -2,41 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Futuristic Glassmorphism Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark Futuristic Background */
+    --background: 240 10% 4%;
+    --foreground: 280 20% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Glassmorphism Cards */
+    --card: 240 15% 8%;
+    --card-foreground: 280 15% 90%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 240 20% 10%;
+    --popover-foreground: 280 15% 90%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Neon Primary - Electric Purple */
+    --primary: 270 100% 70%;
+    --primary-foreground: 240 10% 5%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Neon Secondary - Cyber Blue */
+    --secondary: 200 100% 60%;
+    --secondary-foreground: 240 10% 5%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted Glass Effect */
+    --muted: 240 15% 15%;
+    --muted-foreground: 280 10% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Neon Accent - Electric Pink */
+    --accent: 320 100% 70%;
+    --accent-foreground: 240 10% 5%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 280 20% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Glass Borders */
+    --border: 240 20% 20%;
+    --input: 240 20% 15%;
+    --ring: 270 100% 70%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
+
+    /* Custom Glassmorphism Variables */
+    --glass-bg: 240 15% 10%;
+    --glass-border: 280 30% 25%;
+    --neon-glow: 270 100% 70%;
+    --cyber-blue: 200 100% 60%;
+    --electric-pink: 320 100% 70%;
+    --dark-gradient-start: 240 15% 5%;
+    --dark-gradient-end: 280 20% 10%;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +115,106 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: linear-gradient(135deg, hsl(var(--dark-gradient-start)), hsl(var(--dark-gradient-end)));
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply backdrop-blur-xl border border-white/10 bg-white/5 rounded-2xl;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+
+  /* Neon Glow Effects */
+  .neon-glow {
+    box-shadow: 0 0 20px hsl(var(--neon-glow) / 0.5);
+  }
+
+  .neon-glow-hover {
+    transition: all 0.3s ease;
+  }
+
+  .neon-glow-hover:hover {
+    box-shadow: 0 0 30px hsl(var(--neon-glow) / 0.8);
+    transform: translateY(-2px);
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Floating Animation */
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Scroll Fade In Animation */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+  }
+
+  .fade-in-up.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Particle Background */
+  .particle-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  .particle {
+    position: absolute;
+    background: hsl(var(--primary) / 0.3);
+    border-radius: 50%;
+    animation: particle-float 15s linear infinite;
+  }
+
+  @keyframes particle-float {
+    0% {
+      transform: translateY(100vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Skill Tag */
+  .skill-tag {
+    @apply glass-card px-4 py-2 text-sm font-medium transition-all duration-300;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .skill-tag:hover {
+    @apply neon-glow;
+    background: rgba(255, 255, 255, 0.12);
   }
 }
